@@ -10,7 +10,9 @@
 
 ### 4. 각 서버에 root계정으로 /etc/hosts 파일에 IP와 호스트 이름을 다음과 같이 설정한다.
 
-```# vi /etc/hosts```
+```
+# vi /etc/hosts
+```
 
 ![img001](./img/img001.PNG)  
 
@@ -53,23 +55,29 @@ $ sysctl --system
 ```
 
 ## 4. 스왑 오프
-```# swapoff -a
+```
+# swapoff -a
 ```
 
 ## 5. /etc/fstab 파일에 아래 코드 주석(#) 처리
 
-```#/dev/mapper/centos-swap swap        swap defaults   0 0```
+```
+#/dev/mapper/centos-swap swap        swap defaults   0 0
+```
 
 ## 6. 서버 재시작
 
-```# reboot```
+```
+# reboot
+```
 
 
 ## Kubernetes yum repository 설정(모든 서버에서 실행)
 
 ### 1. 서버의 재부팅이 완료되면 서버에 재접속한 후 Kubernetes yum repository 설정을 한다.
 
-```# cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+```
+# cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86\_64
@@ -85,7 +93,8 @@ EOF
 ## kubeadm 설치(모든 서버에서 실행)
 
 ### 1. kubeadm 설치
-```# yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+```
+# yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 # systemctl enable kubelet && systemctl start kubelet
 ```
 
@@ -95,7 +104,8 @@ EOF
 
 ### kubeadm init 명령어를 이용해서 마스터 노드를 초기화한다. --pod-network-cidr 옵션은 사용할 CNI(Container Network Interface)에 맞게 입력한다. 여기에서는 CNI로 Flannel(--pod-network-cidr=10.244.0.0/16)을 사용한다.
 
-```# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.27.0.211 -> 마스터 노드 Server IP
+```
+# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.27.0.211 -> 마스터 노드 Server IP
 ```
 
 ### 2. 마스터 노드 초기화 완료 모습(빨간색으로 표시된 부분은 노드 컴포넌트 설치 시 필요하므로 따로 복사해두면 편리하다.)
