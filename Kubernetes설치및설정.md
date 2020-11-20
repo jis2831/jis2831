@@ -163,147 +163,97 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 
 ![kubernetes03](./image/kubernetes03.PNG)  
 
-워크노드 컴포넌트 설치 (워크노드)
+## 워크노드 컴포넌트 설치 (워크노드)
 
-2-07
-
-1. kubeadm init 명령을 이용해서 설치할 때 콘솔에 출력된 메시지에 kubeadm join 명령어가 있었다.
-
-이 명령어를 노드 컴포넌트로 사용할 서버에서 실행한다.
-
+### 1. kubeadm init 명령을 이용해서 설치할 때 콘솔에 출력된 메시지에 kubeadm join 명령어가 있었다. 
+### 이 명령어를 노드 컴포넌트로 사용할 서버에서 실행한다.
+```
 # kubeadm join 172.16.1.100:6443 --token yrc47a.55b25p2dhe14pzd1 --discovery-token-ca-cert-hash sha256:2a7a31510b9a0b0da1cf71c2c296
-
+```
 27b40711cdd84be12944a713ce2af2d5d148
 
-2. kubeadm join 명령어를 복사해 놓지 않았다면 아래 명령어를 실행하여 token정보를 확인할 수 있다.
-
+### 2. kubeadm join 명령어를 복사해 놓지 않았다면 아래 명령어를 실행하여 token정보를 확인할 수 있다.
+```
 # kubeadm token list
-
-3. token은 24시간 이후에는 사용불가 하므로 마스터 설치 이후 24시간이 지난 후에 노드 컴포넌트를 설치하는 경우에는 token을 새로 생성한다.
-
+```
+### 3. token은 24시간 이후에는 사용불가 하므로 마스터 설치 이후 24시간이 지난 후에 노드 컴포넌트를 설치하는 경우에는 token을 새로 생성한다.
+```
 # kubeadm token create
-
-4. sha256값은 아래 명령어를 실행하면 나온다.
-
+```
+### 4. sha256값은 아래 명령어를 실행하면 나온다.
+```
 # # openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
+```
+## kubectl 허용(워크노드)
 
-
-
-
-
-2. 설치
-
-2-08 kubectl 허용(워크노드)
-
-1. 마스터 노드에서 아래의 명령어를 실해한 후 config 파일 내용을 복사한다.
-
+### 1. 마스터 노드에서 아래의 명령어를 실해한 후 config 파일 내용을 복사한다.
+```
 # cat $HOME/.kube/config
-
-2. 워크 노드 서버의 $HOME 디렉토리 하위에 .kube 디렉토리를 생성한다.
-
+```
+### 2. 워크 노드 서버의 $HOME 디렉토리 하위에 .kube 디렉토리를 생성한다.
+```
 # cd $HOME
-
 # mkdir .kube
-
-3. 아래의 명령을 실행한 후 vi 편집기에서 마스터 노드의 config 내용을 붙여 넣는다.
-
+```
+### 3. 아래의 명령을 실행한 후 vi 편집기에서 마스터 노드의 config 내용을 붙여 넣는다.
+```
 # vi config
-
-
-
-
+```
 
 3. 확인
 
-실행 확인
+### 실행 확인
 
-3-01
-
-1. kubectl 명령어로 정상적으로 쿠버네티스가 동작하는지 확인한다.
-
+## 1. kubectl 명령어로 정상적으로 쿠버네티스가 동작하는지 확인한다.
+```
 # kubectl get nodes
-
 # kubectl get pod --all-namespaces -o wide
+```
+![kubernetes04](./image/kubernetes04.PNG)  
 
+## 삭제(필요시)
 
-
-
-
-4. 삭제
-
-삭제(필요시)
-
-4-01
-
-1. 아래의 명령어로 쿠버네티스를 삭제한다.
-
+### 1. 아래의 명령어로 쿠버네티스를 삭제한다.
+```
 # kubeadm reset
-
 # systemctl stop kubelet
-
 # systemctl stop docker
-
 # rm -rf /var/lib/cni/
-
 # rm -rf /var/lib/kubelet/*
-
 # rm -rf /run/flannel
-
 # rm -rf /etc/cni/
-
 # rm -rf /etc/kubernetes
-
 # rm -rf /var/lib/etcd/
-
 # ip link delete cni0
-
 # ip link delete flannel.1
-
 # yum remove -y kubelet
-
 # yum remove -y kubectl
-
 # yum remove -y kubeadm
-
 # systemctl start docker
+```
 
 
+## 네트워크 (DNS) 문제로 ContainerCreating 에 멈춘 경우
 
+### 1. cni 가 꼬여서, Cluster 전체가 망가진 상황
+![kubernetes04](./image/kubernetes04.PNG)  
 
-
-5. 트러블슈팅
-
-네트워크 (DNS) 문제로 ContainerCreating 에 멈춘 경우
-
-5-01
-
-1. cni 가 꼬여서, Cluster 전체가 망가진 상황
-
-2. 해결책은 Cluster 를 다시 구성
-
+### 2. 해결책은 Cluster 를 다시 구성
+```
 # kubeadm reset
-
 # systemctl stop kubelet
-
 # systemctl stop docker
-
 # rm -rf /var/lib/cni/
-
 # rm -rf /var/lib/kubelet/*
-
 # rm -rf /etc/cni/
-
 # ifconfig cni0 down
-
 # ifconfig flannel.1 down
-
 # ifconfig docker0 down
-
 # ip link delete cni0
-
 # ip link delete flannel.1
+```
 
-3. /sbin/ifconfig 를 실행해서, 모든 가상 네트워크가 삭제되었음을 확인 후 kubeadm init…. 부터 다시 시작
+### 3. /sbin/ifconfig 를 실행해서, 모든 가상 네트워크가 삭제되었음을 확인 후 kubeadm init…. 부터 다시 시작
 
 # kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.16.1.100 -> 마스터 노드 Server IP
 
