@@ -38,131 +38,101 @@ $ su - root
 ![ISTIO04](./image/ISTIO/ISTIO04.PNG)
 
 
-ISTIO 다운로드 디렉터리로 이동
+## ISTIO 다운로드 디렉터리로 이동
 
-2-02
-
-1. ISTIO 패키지 디렉터리로 이동한다. 예를 들어 패키지가 istio-1.7.1 인 경우 아래와 같이 명령어를 실행한다.
-
+### 1. ISTIO 패키지 디렉터리로 이동한다. 예를 들어 패키지가 istio-1.7.1 인 경우 아래와 같이 명령어를 실행한다.
+```
 # cd istio-1.7.1
+```
+![ISTIO05](./image/ISTIO/ISTIO05.PNG)
 
 
+## ISTIO 환경변수 설정(1/2)
 
-
-
-2.설치
-
-2-03 ISTIO 환경변수 설정(1/2)
-
-1. pwd 명령어를 실행하여 현재 디렉터리 위치를 알아낸다. 현재 디렉터리 위치를 복사해 놓는다.
-
+### 1. pwd 명령어를 실행하여 현재 디렉터리 위치를 알아낸다. 현재 디렉터리 위치를 복사해 놓는다.
+```
 # pwd
-
-2. cd 명령어를 실행하여 root 디렉터리로 이동한다.
-
+```
+### 2. cd 명령어를 실행하여 root 디렉터리로 이동한다.
+```
 # cd
-
-3. vi .bashrc 명령어를 실행하여 .bashrc 파일을 vi 편집기로 연다.
-
+```
+### 3. vi .bashrc 명령어를 실행하여 .bashrc 파일을 vi 편집기로 연다.
+```
 # vi .bashrc
+```
+### 4. keyboar에서 i 버튼을 클릭하여 insert 모드로 변경한다. 최하위로 이동하여 다음과 같이 입력한다.
 
-4. keyboar에서 i 버튼을 클릭하여 insert 모드로 변경한다. 최하위로 이동하여 다음과 같이 입력한다.
+![ISTIO06](./image/ISTIO/ISTIO06.PNG)
 
-export PATH=/root/install\_file/istio/istio-1.7.0/bin:$PATH
+### 빨간색 글씨로 표시된 부분이 pwd 명령어를 실행했을 때 조회되었던 디렉터리 위치이다.
+### 예시에는 /root/install_file/istio 하위 디렉터리에 istio-1.7.0 버전을 설치하여서 아래와 같이 환경변수를 입력하였다.
 
-빨간색 글씨로 표시된 부분이 pwd 명령어를 실행했을 때 조회되었던 디렉터리 위치이다.
-
-예시에는 /root/install\_file/istio 하위 디렉터리에 istio-1.7.0 버전을 설치하여서 아래와 같이 환경변수를 입력하였다.
-
-
-
-
-
-2.설치
-
-2-04 ISTIO 환경변수 설정(2/2)
-
-5. 입력이 끝났으면 차례대로 Esc 입력 : 입력 wq! 입력한 후 엔터를 친다.
-
-6. 아래의 명령어를 입력하여 저장된 내용을 반영한다.
-
+### 5. 입력이 끝났으면 차례대로 Esc 입력 : 입력 wq! 입력한 후 엔터를 친다.
+![ISTIO07](./image/ISTIO/ISTIO07.PNG)
+### 6. 아래의 명령어를 입력하여 저장된 내용을 반영한다.
+```
 # source .bashrc
-
-7. 아래의 명령어를 입력하여 환경변수로 등록한 내용을 확인한다.
-
+```
+### 7. 아래의 명령어를 입력하여 환경변수로 등록한 내용을 확인한다.
+```
 # echo $PATH
-
-8. 등록한 환경변수를 확인한다.
-
-
-
+```
+### 8. 등록한 환경변수를 확인한다.
+![ISTIO08](./image/ISTIO/ISTIO08.PNG)
 
 
-3. 설치
+## ingress-gateway NodePort 사용 설정
 
-ingress-gateway NodePort 사용 설정
-
-2-05
-
-1. 다음 명령을 실행하여 ingress-gateway 설치 파일을 찾는다
-
+### 1. 다음 명령을 실행하여 ingress-gateway 설치 파일을 찾는다
+```
 # find ./ -name values.yaml
+```
+![ISTIO09](./image/ISTIO/ISTIO09.PNG)
 
-2. vi 편집기로 istio-ingress 설치파일을 오픈한다.( ~~~/charts/gateways/istio-ingress/values.yaml à 버전마다 경로가 다름)
-
+### 2. vi 편집기로 istio-ingress 설치파일을 오픈한다.( ~~~/charts/gateways/istio-ingress/values.yaml à 버전마다 경로가 다름)
+```
 # vi ./manifests/charts/gateways/istio-ingress/values.yaml
+```
+### 3. vi 편집기에서 /LoadBalancer 를 입력한 후 엔터를 친다. -> 검색된 후에 i 입력하여 편집모드로 변경한다. -> LoadBalancer 부분을 지우고 NodePort로 바꿔준다. -> ESC 버튼을 입력한후 : 입력하고 wq! 를 입력하여 편집을 종료한다.
 
-3. vi 편집기에서 /LoadBalancer 를 입력한 후 엔터를 친다. -> 검색된 후에 i 입력하여 편집모드로 변경한다. -> LoadBalancer 부분을 지우고
-
-NodePort로 바꿔준다. -> ESC 버튼을 입력한후 : 입력하고 wq! 를 입력하여 편집을 종료한다.
-
-
+![ISTIO10](./image/ISTIO/ISTIO10.PNG)
 
 
+## kiali Service NodePort 사용 설정
 
-3. 설치
 
-kiali Service NodePort 사용 설정
-
-2-06
-
-1. 다음 명령을 실행하여 kiali 설치 파일을 찾는다
-
+### 1. 다음 명령을 실행하여 kiali 설치 파일을 찾는다
+```
 # find ./ -name values.yaml
+```
+![ISTIO11](./image/ISTIO/ISTIO11.PNG)
 
-2. vi 편집기로 kiali 설치파일을 오픈한다.( ~~~/charts/istio-telemetry/kiali/values.yaml à 버전마다 경로가 다름)
-
+### 2. vi 편집기로 kiali 설치파일을 오픈한다.( ~~~/charts/istio-telemetry/kiali/values.yaml à 버전마다 경로가 다름)
+```
 # vi ./manifests/charts/istio-telemetry/kiali/values.yaml
+``` 
 
-3. vi 편집기에서 /ClusterIP 를 입력한 후 엔터를 친다. -> 검색된 후에 i 입력하여 편집모드로 변경한다. -> ClusterIP 부분을 지우고 NodePort로
-
-바꿔준다. -> ESC 버튼을 입력한후 : 입력하고 wq! 를 입력하여 편집을 종료한다.
-
-
+### 3. vi 편집기에서 /ClusterIP 를 입력한 후 엔터를 친다. -> 검색된 후에 i 입력하여 편집모드로 변경한다. -> ClusterIP 부분을 지우고 NodePort로 바꿔준다. -> ESC 버튼을 입력한후 : 입력하고 wq! 를 입력하여 편집을 종료한다.
+![ISTIO12](./image/ISTIO/ISTIO12.PNG)
 
 
+## ISTIO 설치
 
-2.설치
-
-2-07 ISTIO 설치
-
-1. 아래 명령어를 실행하여 ISTIO를 설치한다.
-
+### 1. 아래 명령어를 실행하여 ISTIO를 설치한다.
+```
 # istioctl install --set profile=demo
-
-2. 정상적으로 설치완료 된 모습은 아래와 같다.
-
-3. 오류 현상 및 해결법(오류가 없다면 다음으로 건너 뛰어 계속)
-
--> 이 오류가 발생했다면 Kubernetes를 설치한 계정과 ISTIO를 설치한 계정이 달라서 나는 오류일 가능성이 있음.
-
-또한 root계정으로 설치를 시도했으나 Kubernetes 클러스터에 Acess를 하지 못하면 위와같은 오류가 발생
-
-Kubernetes를 설치한 계정과 ISTIO를 설치한 계정이 같아야함.
-
--> 이 오류가 발생했다면 Kubernetes versio이 Istio 버전과 호환되지않아 나는 오류(not supported) 이다.
-
-이 경우 istio를 삭제한 후 ISTIO와 Kubernetes의 호환 버전 확인하여 재설치를 시도한다.
+```
+### 2. 정상적으로 설치완료 된 모습은 아래와 같다.
+![ISTIO12](./image/ISTIO/ISTIO13.PNG)
+### 3. 오류 현상 및 해결법(오류가 없다면 다음으로 건너 뛰어 계속)
+![ISTIO12](./image/ISTIO/ISTIO14.PNG)
+### -> 이 오류가 발생했다면 Kubernetes를 설치한 계정과 ISTIO를 설치한 계정이 달라서 나는 오류일 가능성이 있음. 
+### 또한 root계정으로 설치를 시도했으나 Kubernetes 클러스터에 Acess를 하지 못하면 위와같은 오류가 발생
+### Kubernetes를 설치한 계정과 ISTIO를 설치한 계정이 같아야함.
+![ISTIO12](./image/ISTIO/ISTIO15.PNG)
+### -> 이 오류가 발생했다면 Kubernetes versio이 Istio 버전과 호환되지않아 나는 오류(not supported) 이다.
+### 이 경우 istio를 삭제한 후 ISTIO와 Kubernetes의 호환 버전 확인하여 재설치를 시도한다.
 
 
 
@@ -228,7 +198,7 @@ namespace/default labeled
 
 3. 아래의 명령어를 실행하여 <title>Simple Bookstore App</title> 의 응답이 오는지 확인한다.
 
-# kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -s productpage:9080/productpage | grep -o "<title>.\*</title>"
+# kubectl exec "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" -c ratings -- curl -s productpage:9080/productpage | grep -o "<title>.*</title>"
 
 
 
