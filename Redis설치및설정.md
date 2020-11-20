@@ -26,7 +26,7 @@
 ```
 # gcc --version
 ```
-![Redis02]](./image/Redis/Redis02.PNG)
+![Redis02](./image/Redis/Redis02.PNG)
 
 ### 2-4. tcl / dcl-devel 설치
 ```
@@ -37,13 +37,13 @@
 ```
 # echo "puts [info tclversion]" | tclsh
 ```
-![Redis03]](./image/Redis/Redis03.PNG)
+![Redis03](./image/Redis/Redis03.PNG)
 
 ### 3. 패키지 설치 (master / slave)
 ```
 # make install
 ```
-![Redis04]](./image/Redis/Redis04.PNG)
+![Redis04](./image/Redis/Redis04.PNG)
 
 
 ### 3-1 Redis 실행파일 복사
@@ -137,7 +137,7 @@ sentinel monitor mymaster 172.27.0.11 26379 2
 -- sentinel 구성 확인
 127.0.0.1:26378> sentinel sentinels mymaster
 ```
-![redis1](./image/redis/redis1.PNG)
+![redis1](./image/Redis/redis1.PNG)
 
 ## 설치 확인
 
@@ -148,6 +148,6 @@ sentinel monitor mymaster 172.27.0.11 26379 2
 -- replication 구성 확인
 127.0.0.1:26379> info replication
 ```
-![redis2](./image/redis/redis2.PNG)
+![redis2](./image/Redis/redis2.PNG)
 
 
