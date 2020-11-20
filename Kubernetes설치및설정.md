@@ -12,7 +12,7 @@
 
 <pre><code># vi /etc/hosts</code></pre>
 
-![img001](./img/img001.png)  
+![img001](./img/img001)  
 
 위의 예시에서는  
 192.168.90.11 Master  
