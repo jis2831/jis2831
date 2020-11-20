@@ -236,7 +236,7 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 ## 네트워크 (DNS) 문제로 ContainerCreating 에 멈춘 경우
 
 ### 1. cni 가 꼬여서, Cluster 전체가 망가진 상황
-![kubernetes04](./image/kubernetes/kubernetes04.PNG)  
+![kubernetes05](./image/kubernetes/kubernetes05.PNG)  
 
 ### 2. 해결책은 Cluster 를 다시 구성
 ```
@@ -254,32 +254,25 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 ```
 
 ### 3. /sbin/ifconfig 를 실행해서, 모든 가상 네트워크가 삭제되었음을 확인 후 kubeadm init…. 부터 다시 시작
-
+```
 # kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.16.1.100 -> 마스터 노드 Server IP
+```
 
+## 노드서버에서 kubectl 명령시 에러
 
+### 1. kubectl 명령시 아래와 같은 에러가 발생한 경우
+![kubernetes06](./image/kubernetes/kubernetes06.PNG)  
 
-
-
-5. 트러블슈팅
-
-노드서버에서 kubectl 명령시 에러
-
-5-01
-
-1. kubectl 명령시 아래와 같은 에러가 발생한 경우
-
-1. 마스터 노드에서 아래의 명령어를 실해한 후 config 파일 내용을 복사한다.
-
+### 1. 마스터 노드에서 아래의 명령어를 실해한 후 config 파일 내용을 복사한다.
+```
 # cat $HOME/.kube/config
-
-2. 워커노드 서버의 $HOME 디렉토리 하위에 .kube 디렉토리를 생성한다.
-
+```
+## 2. 워커노드 서버의 $HOME 디렉토리 하위에 .kube 디렉토리를 생성한다.
+```
 # cd $HOME
-
 # mkdir .kube
-
-3. 아래의 명령을 실행한 후 vi 편집기에서 마스터 노드의 config 내용을 붙여 넣는다.
-
+```
+### 3. 아래의 명령을 실행한 후 vi 편집기에서 마스터 노드의 config 내용을 붙여 넣는다.
+```
 # vi config
-
+```
