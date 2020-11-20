@@ -15,7 +15,7 @@
 # kubectl -n kube-system create sa tiller
 # kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
 ```
-![Helm01](./image/Helm01/ISTIO06.PNG)
+![Helm01](./image/Helm/Helm01.PNG)
 ### 4. Helm 초기화
 ```
 # helm init --service-account tiller
