@@ -64,61 +64,36 @@ $ sysctl --system
 
 <pre><code># reboot</code></pre>
 
-1. 준비
 
-1-04 Kubernetes yum repository 설정(모든 서버에서 실행)
+## Kubernetes yum repository 설정(모든 서버에서 실행)
 
-1. 서버의 재부팅이 완료되면 서버에 재접속한 후 Kubernetes yum repository 설정을 한다.
+### 1. 서버의 재부팅이 완료되면 서버에 재접속한 후 Kubernetes yum repository 설정을 한다.
 
-# cat <<EOF > /etc/yum.repos.d/kubernetes.repo
-
+<pre><code># cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
-
 name=Kubernetes
-
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86\_64
-
 enabled=1
-
 gpgcheck=1
-
 repo\_gpgcheck=1
-
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-
 exclude=kube\*
-
 EOF
+</code></pre>
 
 
+## kubeadm 설치(모든 서버에서 실행)
 
-
-
-2. 설치
-
-2-01 kubeadm 설치(모든 서버에서 실행)
-
-1. kubeadm 설치
-
-# yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
-
+### 1. kubeadm 설치
+<pre><code># yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 # systemctl enable kubelet && systemctl start kubelet
+</code></pre>
 
+## 마스터 노드 컴포넌트 설치(마스터 노드)
 
+### 1. kubeadm init 명령으로 마스터 노드 초기화
 
-
-
-2. 설치
-
-마스터 노드 컴포넌트 설치(마스터 노드)
-
-2-02
-
-1. kubeadm init 명령으로 마스터 노드 초기화
-
-kubeadm init 명령어를 이용해서 마스터 노드를 초기화한다. --pod-network-cidr 옵션은 사용할 CNI(Container Network Interface)에 맞게
-
-입력한다. 여기에서는 CNI로 Flannel(--pod-network-cidr=10.244.0.0/16)을 사용한다.
+## kubeadm init 명령어를 이용해서 마스터 노드를 초기화한다. --pod-network-cidr 옵션은 사용할 CNI(Container Network Interface)에 맞게 입력한다. 여기에서는 CNI로 Flannel(--pod-network-cidr=10.244.0.0/16)을 사용한다.
 
 # kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.27.0.211 -> 마스터 노드 Server IP
 
