@@ -9,9 +9,8 @@
 ### 3. 클러스터의 모든 시스템 간의 네트워크 연결이 되어 있어야 한다.
 
 ### 4. 각 서버에 root계정으로 /etc/hosts 파일에 IP와 호스트 이름을 다음과 같이 설정한다.
-<pre><code>
-# vi /etc/hosts
-</code></pre>
+<pre><code># vi /etc/hosts</code></pre>
+
 ![img001](./img/img001.png)
 ### 위의 예시에서는
 ### 192.168.90.11 Master
