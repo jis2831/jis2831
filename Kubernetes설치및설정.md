@@ -100,7 +100,7 @@ EOF
 
 ### 2. 마스터 노드 초기화 완료 모습(빨간색으로 표시된 부분은 노드 컴포넌트 설치 시 필요하므로 따로 복사해두면 편리하다.)
 
-```# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.16.1.100
+```diff # kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.16.1.100
 ...생략
 [addons] Applied essential addon: CoreDNS
 [addons] Applied essential addon: kube-proxy
@@ -113,14 +113,9 @@ You should now deploy a pod network to the cluster.
 Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 https://kubernetes.io/docs/concepts/cluster-administration/addons/
 You can now join any number of machines by running the following on each node
-as root:
-kubeadm join 172.16.1.100:6443 --token yrc47a.55b25p2dhe14pzd1 --discovery-token-ca-cert-hash sha256:2a7a31510b9a0b0da1cf71c2c29627b40711
-cdd84be12944a713ce2af2d5d148
+as root: 
+- kubeadm join 172.16.1.100:6443 --token yrc47a.55b25p2dhe14pzd1 --discovery-token-ca-cert-hash sha256:2a7a31510b9a0b0da1cf71c2c29627b40711cdd84be12944a713ce2af2d5d148
 ```
-
-
-
-
 2. 설치
 
 2-05 kubectl 허용(마스터 노드)
