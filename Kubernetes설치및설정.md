@@ -122,7 +122,8 @@ as root:
 
 ### 1. 아래의 명령어로 root 이외의 다른 사용자도 kubectl 명령을 사용 가능하도록 허용해준다.
 
-```# mkdir -p $HOME/.kube
+```
+# mkdir -p $HOME/.kube
 # sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 # sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
