@@ -200,8 +200,6 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 # vi config
 ```
 
-3. 확인
-
 ### 실행 확인
 
 ## 1. kubectl 명령어로 정상적으로 쿠버네티스가 동작하는지 확인한다.
