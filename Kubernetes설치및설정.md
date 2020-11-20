@@ -267,7 +267,7 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 ```
 # cat $HOME/.kube/config
 ```
-## 2. 워커노드 서버의 $HOME 디렉토리 하위에 .kube 디렉토리를 생성한다.
+### 2. 워커노드 서버의 $HOME 디렉토리 하위에 .kube 디렉토리를 생성한다.
 ```
 # cd $HOME
 # mkdir .kube
