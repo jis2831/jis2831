@@ -95,42 +95,28 @@ EOF
 
 ### kubeadm init 명령어를 이용해서 마스터 노드를 초기화한다. --pod-network-cidr 옵션은 사용할 CNI(Container Network Interface)에 맞게 입력한다. 여기에서는 CNI로 Flannel(--pod-network-cidr=10.244.0.0/16)을 사용한다.
 
-# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.27.0.211 -> 마스터 노드 Server IP
+<pre><code># kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.27.0.211 -> 마스터 노드 Server IP
+</code></pre>
 
-2. 마스터 노드 초기화 완료 모습(빨간색으로 표시된 부분은 노드 컴포넌트 설치 시 필요하므로 따로 복사해두면 편리하다.)
+### 2. 마스터 노드 초기화 완료 모습(빨간색으로 표시된 부분은 노드 컴포넌트 설치 시 필요하므로 따로 복사해두면 편리하다.)
 
-# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.16.1.100
-
+<pre><code># kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.16.1.100
 ...생략
-
 [addons] Applied essential addon: CoreDNS
-
 [addons] Applied essential addon: kube-proxy
-
 Your Kubernetes master has initialized successfully!
-
 To start using your cluster, you need to run the following as a regular user:
-
 mkdir -p $HOME/.kube
-
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
 You should now deploy a pod network to the cluster.
-
 Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
-
 https://kubernetes.io/docs/concepts/cluster-administration/addons/
-
 You can now join any number of machines by running the following on each node
-
 as root:
-
 kubeadm join 172.16.1.100:6443 --token yrc47a.55b25p2dhe14pzd1 --discovery-token-ca-cert-hash sha256:2a7a31510b9a0b0da1cf71c2c29627b40711
-
 cdd84be12944a713ce2af2d5d148
-
+</code></pre>
 
 
 
