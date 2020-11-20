@@ -14,7 +14,7 @@
 # vi /etc/hosts
 ```
 
-![img001](./img/img001.PNG)  
+![kubernetes01](./image/kubernetes01.PNG)  
 
 위의 예시에서는  
 192.168.90.11 Master  
@@ -153,7 +153,7 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 # kubectl get pods --all-namespaces
 ```
 ### 2. 마스터 실행 확인 결과(kubectl 명령어로 쿠버네티스 마스터 실행을 확인한다. STATUS가 Running이면 정상 실행된 것이다.)
-![img002](./img/img002.PNG)  
+![kubernetes02](./image/kubernetes02.PNG)  
 
 ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Romana, Weave Net 정리할것
 
@@ -161,7 +161,7 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 
 ### 1. Pod 네트워킹 인터페이스에 대한 설명은 https://medium.com/finda-tech/kubernetes-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%A0%95%EB%A6%AC-fccd4fd0ae6 참조할것
 
-![img003](./img/img003.PNG)  
+![kubernetes03](./image/kubernetes03.PNG)  
 
 워크노드 컴포넌트 설치 (워크노드)
 
