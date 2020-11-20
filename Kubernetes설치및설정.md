@@ -30,58 +30,39 @@
 # systemctl start docker && systemctl enable docker
 </code></pre>
 
+## kubeadm 설치 준비(모든 서버에서 실행)
 
-
-
-1. 준비
-
-kubeadm 설치 준비(모든 서버에서 실행)
-
-1-03
-
-1. SELinux 설정을 permissive 모드로 변경
-
-# setenforce 0
-
+### 1. SELinux 설정을 permissive 모드로 변경
+<pre><code># setenforce 0
 # sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+</code></pre>
 
-2. iptable 설정
+### 2. iptable 설정
 
-# cat <<EOF > /etc/sysctl.d/k8s.conf
-
+<pre><code># cat <<EOF > /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
-
 net.bridge.bridge-nf-call-iptables = 1
-
 EOF
-
 $ sysctl --system
+</code></pre>
 
-3. firewalld 비활성화
+## 3. firewalld 비활성화
 
-# systemctl stop firewalld
-
+<pre><code># systemctl stop firewalld
 # systemctl disable firewalld
+</code></pre>
 
-4. 스왑 오프
+## 4. 스왑 오프
+<pre><code># swapoff -a
+</code></pre>
 
-# swapoff -a
+## 5. /etc/fstab 파일에 아래 코드 주석(#) 처리
 
-5. /etc/fstab 파일에 아래 코드 주석(#) 처리
+<pre><code>#/dev/mapper/centos-swap swap        swap defaults   0 0</code></pre>
 
-#/dev/mapper/centos-swap swap
+## 6. 서버 재시작
 
-swap defaults
-
-0 0
-
-6. 서버 재시작
-
-# reboot
-
-
-
-
+<pre><code># reboot</code></pre>
 
 1. 준비
 
