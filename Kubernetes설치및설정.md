@@ -232,7 +232,6 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 # systemctl start docker
 ```
 
-
 ## 네트워크 (DNS) 문제로 ContainerCreating 에 멈춘 경우
 
 ### 1. cni 가 꼬여서, Cluster 전체가 망가진 상황
