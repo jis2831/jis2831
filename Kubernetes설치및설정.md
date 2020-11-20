@@ -14,7 +14,7 @@
 # vi /etc/hosts
 ```
 
-![kubernetes01](./image/kubernetes01.PNG)  
+![kubernetes01](./image/kubernetes/kubernetes01.PNG)  
 
 위의 예시에서는  
 192.168.90.11 Master  
@@ -153,7 +153,7 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 # kubectl get pods --all-namespaces
 ```
 ### 2. 마스터 실행 확인 결과(kubectl 명령어로 쿠버네티스 마스터 실행을 확인한다. STATUS가 Running이면 정상 실행된 것이다.)
-![kubernetes02](./image/kubernetes02.PNG)  
+![kubernetes02](./image/kubernetes/kubernetes02.PNG)  
 
 ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Romana, Weave Net 정리할것
 
@@ -161,7 +161,7 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 
 ### 1. Pod 네트워킹 인터페이스에 대한 설명은 https://medium.com/finda-tech/kubernetes-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%A0%95%EB%A6%AC-fccd4fd0ae6 참조할것
 
-![kubernetes03](./image/kubernetes03.PNG)  
+![kubernetes03](./image/kubernetes/kubernetes03.PNG)  
 
 ## 워크노드 컴포넌트 설치 (워크노드)
 
@@ -209,7 +209,7 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 # kubectl get nodes
 # kubectl get pod --all-namespaces -o wide
 ```
-![kubernetes04](./image/kubernetes04.PNG)  
+![kubernetes04](./image/kubernetes/kubernetes04.PNG)  
 
 ## 삭제(필요시)
 
@@ -236,7 +236,7 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 ## 네트워크 (DNS) 문제로 ContainerCreating 에 멈춘 경우
 
 ### 1. cni 가 꼬여서, Cluster 전체가 망가진 상황
-![kubernetes04](./image/kubernetes04.PNG)  
+![kubernetes04](./image/kubernetes/kubernetes04.PNG)  
 
 ### 2. 해결책은 Cluster 를 다시 구성
 ```
