@@ -18,7 +18,7 @@ $ su - root
 # kubectl version
 # kubectl get nodes
 ```
-![ISTIO01](./image/ISTIO/ISTIO01.PNG) 
+![ISTIO01](./image/ISTIO/ISTIO01.PNG). 
 
 ### 2. ISTIO 설치 전에 아래의 표를 확인하여 설치할 서버의 Kubernetes 버전에 맞는 ISTIO Release version을 확인한다.
 
@@ -91,7 +91,7 @@ $ su - root
 ```
 ![ISTIO09](./image/ISTIO/ISTIO09.PNG)
 
-### 2. vi 편집기로 istio-ingress 설치파일을 오픈한다.( ~~~/charts/gateways/istio-ingress/values.yaml à 버전마다 경로가 다름)
+### 2. vi 편집기로 istio-ingress 설치파일을 오픈한다.( ~~~/charts/gateways/istio-ingress/values.yaml -> 버전마다 경로가 다름)
 ```
 # vi ./manifests/charts/gateways/istio-ingress/values.yaml
 ```
@@ -109,7 +109,7 @@ $ su - root
 ```
 ![ISTIO11](./image/ISTIO/ISTIO11.PNG)
 
-### 2. vi 편집기로 kiali 설치파일을 오픈한다.( ~~~/charts/istio-telemetry/kiali/values.yaml à 버전마다 경로가 다름)
+### 2. vi 편집기로 kiali 설치파일을 오픈한다.( ~~~/charts/istio-telemetry/kiali/values.yaml -> 버전마다 경로가 다름)
 ```
 # vi ./manifests/charts/istio-telemetry/kiali/values.yaml
 ``` 
