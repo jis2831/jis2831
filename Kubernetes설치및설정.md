@@ -10,7 +10,7 @@
 
 ### 4. 각 서버에 root계정으로 /etc/hosts 파일에 IP와 호스트 이름을 다음과 같이 설정한다.
 
-<pre><code># vi /etc/hosts</code></pre>
+```# vi /etc/hosts```
 
 ![img001](./img/img001.PNG)  
 
@@ -24,52 +24,52 @@
 ### 1. 전체 서버에 Docker 를 설치한다.(https://docs.docker.com/engine/install/centos/)
 
 ### 2. Docker 설치가 완료되면 아래의 명령어를 실행시킨다.
-<pre><code># yum install -y yum-utils device-mapper-persistent-data lvm2
+```# yum install -y yum-utils device-mapper-persistent-data lvm2
 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 # yum install docker-ce
 # systemctl start docker && systemctl enable docker
-</code></pre>
+```
 
 ## kubeadm 설치 준비(모든 서버에서 실행)
 
 ### 1. SELinux 설정을 permissive 모드로 변경
-<pre><code># setenforce 0
+```# setenforce 0
 # sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
-</code></pre>
+```
 
 ### 2. iptable 설정
 
-<pre><code># cat <<EOF > /etc/sysctl.d/k8s.conf
+```# cat <<EOF > /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 EOF
 $ sysctl --system
-</code></pre>
+```
 
 ## 3. firewalld 비활성화
 
-<pre><code># systemctl stop firewalld
+```# systemctl stop firewalld
 # systemctl disable firewalld
-</code></pre>
+```
 
 ## 4. 스왑 오프
-<pre><code># swapoff -a
-</code></pre>
+```# swapoff -a
+```
 
 ## 5. /etc/fstab 파일에 아래 코드 주석(#) 처리
 
-<pre><code>#/dev/mapper/centos-swap swap        swap defaults   0 0</code></pre>
+```#/dev/mapper/centos-swap swap        swap defaults   0 0```
 
 ## 6. 서버 재시작
 
-<pre><code># reboot</code></pre>
+```# reboot```
 
 
 ## Kubernetes yum repository 설정(모든 서버에서 실행)
 
 ### 1. 서버의 재부팅이 완료되면 서버에 재접속한 후 Kubernetes yum repository 설정을 한다.
 
-<pre><code># cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+```# cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
 baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86\_64
@@ -79,15 +79,15 @@ repo\_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 exclude=kube\*
 EOF
-</code></pre>
+```
 
 
 ## kubeadm 설치(모든 서버에서 실행)
 
 ### 1. kubeadm 설치
-<pre><code># yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+```# yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 # systemctl enable kubelet && systemctl start kubelet
-</code></pre>
+```
 
 ## 마스터 노드 컴포넌트 설치(마스터 노드)
 
@@ -95,8 +95,8 @@ EOF
 
 ### kubeadm init 명령어를 이용해서 마스터 노드를 초기화한다. --pod-network-cidr 옵션은 사용할 CNI(Container Network Interface)에 맞게 입력한다. 여기에서는 CNI로 Flannel(--pod-network-cidr=10.244.0.0/16)을 사용한다.
 
-<pre><code># kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.27.0.211 -> 마스터 노드 Server IP
-</code></pre>
+```# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=172.27.0.211 -> 마스터 노드 Server IP
+```
 
 ### 2. 마스터 노드 초기화 완료 모습(빨간색으로 표시된 부분은 노드 컴포넌트 설치 시 필요하므로 따로 복사해두면 편리하다.)
 
@@ -117,22 +117,19 @@ You can now join any number of machines by running the following on each node
 as root: 
 - kubeadm join 172.16.1.100:6443 --token yrc47a.55b25p2dhe14pzd1 --discovery-token-ca-cert-hash sha256:2a7a31510b9a0b0da1cf71c2c29627b40711cdd84be12944a713ce2af2d5d148
 ```
-2. 설치
 
-2-05 kubectl 허용(마스터 노드)
+## kubectl 허용(마스터 노드)
 
-1. 아래의 명령어로 root 이외의 다른 사용자도 kubectl 명령을 사용 가능하도록 허용해준다.
+### 1. 아래의 명령어로 root 이외의 다른 사용자도 kubectl 명령을 사용 가능하도록 허용해준다.
 
-# mkdir -p $HOME/.kube
-
+```# mkdir -p $HOME/.kube
 # sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-
 # sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-2. 환경 변수 설정
-
+```
+### 2. 환경 변수 설정
+```
 export KUBECONFIG=/etc/kubernetes/admin.conf
-
+```
 
 
 
