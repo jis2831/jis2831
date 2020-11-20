@@ -1,11 +1,10 @@
-# Kubernetes 설치 및 설정
-**(in Centos 7)**
+# Kubernetes 설치 및 설정   (in Centos 7)
 
 ## 설치준비
 
-### 1. Master node 와 Work Node1, Work Node2…. Work Node#n 으로 사용될 서버에 CentOS 7을 설치한다.**
+### 1. Master node 와 Work Node1, Work Node2…. Work Node#n 으로 사용될 서버에 CentOS 7을 설치한다.
 
-### 2. 서버 당 2GB 이상의 RAM이 필요하다**
+### 2. 서버 당 2GB 이상의 RAM이 필요하다
 
 **3. 클러스터의 모든 시스템 간의 네트워크 연결이 되어 있어야 한다.**
 
