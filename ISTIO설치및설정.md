@@ -7,6 +7,7 @@
 ```
 $ su - root
 ```
+![ISTIO00](./image/ISTIO/ISTIO00.PNG)
 
 ### root 계정의 암호를 입력한 후 엔터
 
