@@ -18,7 +18,7 @@ $ su - root
 # kubectl version
 # kubectl get nodes
 ```
-![ISTIO01](./image/ISTIO/ISTIO01.PNG)
+![ISTIO01](./image/ISTIO/ISTIO01.PNG) 
 
 ### 2. ISTIO 설치 전에 아래의 표를 확인하여 설치할 서버의 Kubernetes 버전에 맞는 ISTIO Release version을 확인한다.
 
