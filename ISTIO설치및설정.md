@@ -124,13 +124,13 @@ $ su - root
 # istioctl install --set profile=demo
 ```
 ### 2. 정상적으로 설치완료 된 모습은 아래와 같다.
-![ISTIO12](./image/ISTIO/ISTIO13.PNG)
+![ISTIO13](./image/ISTIO/ISTIO13.PNG)
 ### 3. 오류 현상 및 해결법(오류가 없다면 다음으로 건너 뛰어 계속)
-![ISTIO12](./image/ISTIO/ISTIO14.PNG)
+![ISTIO14](./image/ISTIO/ISTIO14.PNG)
 ### -> 이 오류가 발생했다면 Kubernetes를 설치한 계정과 ISTIO를 설치한 계정이 달라서 나는 오류일 가능성이 있음. 
 ### 또한 root계정으로 설치를 시도했으나 Kubernetes 클러스터에 Acess를 하지 못하면 위와같은 오류가 발생
 ### Kubernetes를 설치한 계정과 ISTIO를 설치한 계정이 같아야함.
-![ISTIO12](./image/ISTIO/ISTIO15.PNG)
+![ISTIO15](./image/ISTIO/ISTIO15.PNG)
 ### -> 이 오류가 발생했다면 Kubernetes versio이 Istio 버전과 호환되지않아 나는 오류(not supported) 이다.
 ### 이 경우 istio를 삭제한 후 ISTIO와 Kubernetes의 호환 버전 확인하여 재설치를 시도한다.
 
