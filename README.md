@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-https://github.com/jis2831/makemd.git asdfasdfasf
+https://github.com/jis2831/makemd.git asdfasdfasfasdf
 
 ## Available Scripts
 
