@@ -80,12 +80,12 @@ $ sysctl --system
 # cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86\_64
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
 enabled=1
 gpgcheck=1
-repo\_gpgcheck=1
+repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-exclude=kube\*
+exclude=kube*
 EOF
 ```
 
@@ -157,59 +157,11 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 
 ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Romana, Weave Net 정리할것
 
+## CNI 별 정리(Pod 네트워킹 인터페이스)
 
+### 1. Pod 네트워킹 인터페이스에 대한 설명은 https://medium.com/finda-tech/kubernetes-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%A0%95%EB%A6%AC-fccd4fd0ae6 참조할것
 
-
-
-2. 설치
-
-2-06 CNI 별 정리(Pod 네트워킹 인터페이스)
-
-1. Pod 네트워킹 인터페이스에 대한 설명은 https://medium.com/finda-tech/kubernetes-
-
-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EC%A0%95%EB%A6%AC-fccd4fd0ae6 참조할것
-
-CNI종류
-
-마스터 노드 초기화 명령어
-
-CNI 설치명령어
-
-kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-
-
-datastore/calico-networking/1.7/calico.yaml
-
-Calico
-
-kubeadm init --pod-network-cidr=192.168.0.0/16
-
-Flannel
-
-Weave
-
-kubeadm init --pod-network-cidr=10.244.0.0/16
-
-kubeadm init --pod-network-cidr 10.32.0.0/12
-
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
-
-kubeadm init --pod-network-cidr=10.217.0.0/16 -
-
--skip-phases=addon/kube-proxy
-
-kubectl apply -f https://raw.githubusercontent.com/cilium/cilium/v1.8/examples/kubernetes/connectivity-
-
-check/connectivity-check.yaml
-
-Cilium
-
-
-
-
-
-2. 설치
+![img003](./img/img003.PNG)  
 
 워크노드 컴포넌트 설치 (워크노드)
 
@@ -233,7 +185,7 @@ Cilium
 
 4. sha256값은 아래 명령어를 실행하면 나온다.
 
-# # openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.\* //'
+# # openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
 
 
 
@@ -293,7 +245,7 @@ Cilium
 
 # rm -rf /var/lib/cni/
 
-# rm -rf /var/lib/kubelet/\*
+# rm -rf /var/lib/kubelet/*
 
 # rm -rf /run/flannel
 
@@ -337,7 +289,7 @@ Cilium
 
 # rm -rf /var/lib/cni/
 
-# rm -rf /var/lib/kubelet/\*
+# rm -rf /var/lib/kubelet/*
 
 # rm -rf /etc/cni/
 
