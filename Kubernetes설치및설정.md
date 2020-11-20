@@ -142,26 +142,20 @@ as root:
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
 
+## CNI 설치 (마스터 노드)
 
-
-
-2. 설치
-
-2-06 CNI 설치 (마스터 노드)
-
-1. 여기서는 Flannel을 설치한다. 설치 명령어는 다음과 같다.
-
+### 1. 여기서는 Flannel을 설치한다. 설치 명령어는 다음과 같다.
+```
 # kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-
-2. 실행 확인
-
+```
+## 실행 확인
+```
 # kubectl get pods --all-namespaces
+```
+### 2. 마스터 실행 확인 결과(kubectl 명령어로 쿠버네티스 마스터 실행을 확인한다. STATUS가 Running이면 정상 실행된 것이다.)
+![img002](./img/img002.PNG)  
 
-2. 마스터 실행 확인 결과(kubectl 명령어로 쿠버네티스 마스터 실행을 확인한다. STATUS가 Running이면 정상 실행된 것이다.)
-
-ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel,
-
-Multus, NSX-T, Nuage, Romana, Weave Net 정리할것
+ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Romana, Weave Net 정리할것
 
 
 
