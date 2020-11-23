@@ -13,7 +13,7 @@
 
 -- Download latest Nexus artifact
 # mkdir ~/install/nexus && cd ~/install/nexus
-# wget -O nexus.tar.gz [http://download.sonatype.com/nexus/3/latest-unix.tar.gz](http://download.sonatype.com/nexus/3/latest-unix.tar.gz)
+# wget -O nexus.tar.gz http://download.sonatype.com/nexus/3/latest-unix.tar.gz
 
 -- Extract it to /opt/nexus
 # tar xvfz nexus.tar.gz -C /opt/nexus --strip-components 1
