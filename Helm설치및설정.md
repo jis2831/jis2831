@@ -1,6 +1,5 @@
 ### Helm 설치 및 설정
 
-
 ### 1. 설치 Script Download
 ```
 # curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get\_helm.sh
