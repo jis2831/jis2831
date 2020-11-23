@@ -26,7 +26,8 @@
 ### 1. 전체 서버에 Docker 를 설치한다.(https://docs.docker.com/engine/install/centos/)
 
 ### 2. Docker 설치가 완료되면 아래의 명령어를 실행시킨다.
-```# yum install -y yum-utils device-mapper-persistent-data lvm2
+```
+# yum install -y yum-utils device-mapper-persistent-data lvm2
 # yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 # yum install docker-ce
 # systemctl start docker && systemctl enable docker
