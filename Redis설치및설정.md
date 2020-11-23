@@ -1,5 +1,8 @@
 ## Redis 설치 및 설정
 
+
+## 설치
+
 ### 1. Download (master / slave)
 ```
 # wget http://download.redis.io/releases/redis-6.0.8.tar.gz
@@ -77,7 +80,6 @@ ps -ef | grep redis-sentinel | grep -v grep | awk '{print $2}' | xargs kill -9
 ```
 
 
-## 설치
 
 ### 3-2 Redis 설정 파일 복사
 ```
