@@ -68,7 +68,7 @@ $ su - root
 
 ### 빨간색 글씨로 표시된 부분이 pwd 명령어를 실행했을 때 조회되었던 디렉터리 위치이다.
 ### 예시에는 /root/install_file/istio 하위 디렉터리에 istio-1.7.0 버전을 설치하여서 아래와 같이 환경변수를 입력하였다.
-
+![ISTIO06-1](./image/ISTIO/ISTIO06-1.PNG)
 ### 5. 입력이 끝났으면 차례대로 Esc 입력 : 입력 wq! 입력한 후 엔터를 친다.
 ![ISTIO07](./image/ISTIO/ISTIO07.PNG)
 ### 6. 아래의 명령어를 입력하여 저장된 내용을 반영한다.
