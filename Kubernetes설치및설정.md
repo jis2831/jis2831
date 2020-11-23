@@ -36,13 +36,15 @@
 ## kubeadm 설치 준비(모든 서버에서 실행)
 
 ### 1. SELinux 설정을 permissive 모드로 변경
-```# setenforce 0
+```
+# setenforce 0
 # sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 ```
 
 ### 2. iptable 설정
 
-```# cat <<EOF > /etc/sysctl.d/k8s.conf
+```
+ cat <<EOF > /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 EOF
@@ -51,7 +53,8 @@ $ sysctl --system
 
 ## 3. firewalld 비활성화
 
-```# systemctl stop firewalld
+```
+# systemctl stop firewalld
 # systemctl disable firewalld
 ```
 
@@ -170,9 +173,8 @@ ACI, Calico, Canal, Cilium, CNI-Genie, Contiv, Flannel, Multus, NSX-T, Nuage, Ro
 ### 이 명령어를 노드 컴포넌트로 사용할 서버에서 실행한다.
 ```
 # kubeadm join 172.16.1.100:6443 --token yrc47a.55b25p2dhe14pzd1 --discovery-token-ca-cert-hash sha256:2a7a31510b9a0b0da1cf71c2c296
-```
 27b40711cdd84be12944a713ce2af2d5d148
-
+```
 ### 2. kubeadm join 명령어를 복사해 놓지 않았다면 아래 명령어를 실행하여 token정보를 확인할 수 있다.
 ```
 # kubeadm token list
