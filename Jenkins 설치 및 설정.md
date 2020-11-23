@@ -23,7 +23,7 @@ https://blog.jiniworld.me/88
 ### 2. Maven 설치
 ```
 --설치하고자 하는 경로에 압축파일을 다운받아 해제한 후 해당 폴더를 MAVEN_HOME로 설정
-# wget [https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz](https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz)
+# wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
 # tar xvzf apache-maven-3.6.3-bin.tar.gz
 ```
 ```
