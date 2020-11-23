@@ -1,0 +1,17 @@
+{
+    "name": "hello",
+    "version": "1.0.0",
+    "scripts": {
+        "server": "nodemon server.js",
+        "client": "cd client && yarn start",
+        "dev": "concurrently \"yarn server\" \"yarn client\""
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4",
+        "nodemon": "^2.0.6"
+    },
+    "devDependencies": {
+        "concurrently": "^4.0.1"
+    }
+}
