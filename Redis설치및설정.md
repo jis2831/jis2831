@@ -137,7 +137,7 @@ sentinel monitor mymaster 172.27.0.11 26379 2
 -- sentinel 구성 확인
 127.0.0.1:26378> sentinel sentinels mymaster
 ```
-![Redis05](./image/Redis/Redis05.PNG)
+![Redis05](./image/Redis/Redis05.png)
 
 ## 설치 확인
 
@@ -148,6 +148,6 @@ sentinel monitor mymaster 172.27.0.11 26379 2
 -- replication 구성 확인
 127.0.0.1:26379> info replication
 ```
-![Redis06](./image/Redis/Redis06.PNG)
+![Redis06](./image/Redis/Redis06.png)
 
 
