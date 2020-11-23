@@ -14,7 +14,7 @@
 ```
 # gcc --verison
 ```
-![Redis01]](./image/Redis/Redis01.PNG)
+![Redis01](./image/Redis/Redis01.PNG)
 ### 2-2. developer toolset을 설치하여 업데이트
 ```
 # yum install centos-release-scl
