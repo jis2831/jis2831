@@ -21,7 +21,7 @@ Select architecture : x86_x64
 ## PostgreSQL 13 설치
 ### 1. 스크립트를 통한 설치
 ```
-# yum install -y [https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm](https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm)
+# yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 # yum install -y postgresql13-server
 # /usr/pgsql-13/bin/postgresql-13-setup initdb
 # systemctl enable postgresql-13
@@ -135,8 +135,8 @@ systemctl start postgresql-13
 ```
 
 ### 6. 패키지 삭제
+### - 설치된 패키지의 리스트를 확인하기 위해 아래 명령어
 ```
-- 설치된 패키지의 리스트를 확인하기 위해 아래 명령어
 # yum list installed postgres*
 ```
 
