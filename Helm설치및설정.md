@@ -1,4 +1,4 @@
-### Helm 설치 및 설정
+## Helm 설치 및 설정
 
 ### 1. 설치 Script Download
 ```
